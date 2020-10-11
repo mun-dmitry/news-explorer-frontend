@@ -12,6 +12,14 @@ Frontend часть дипломной работы по курсу веб-ра�
 `git clone https://github.com/mun-dmitry/news-explorer-frontend.git`
 2. Установите зависимости  
 `npm install`
+3. Работайте с проектом
+- Сборка в режиме разработки  
+`npm run dev`
+- Сборка проекта  
+`npm run build`
+- Публикация проекта на gh-pages  
+`npm run deploy`
 ## Сайт проекта
 API сервера `https://api.yapr-news-explorer.tk`  
-[News-explorer](https://yapr-news-explorer.tk)
+[News-explorer](https://yapr-news-explorer.tk)  
+[Макет вёрстки](https://mun-dmitry.github.io/news-explorer-frontend/)
