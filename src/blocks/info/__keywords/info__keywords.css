@@ -1,0 +1,9 @@
+.info__keywords {
+  font-size: inherit;
+  line-height: inerit;
+  margin: 30px 0 56px 0;
+}
+
+.info__keywords span {
+  font-weight: 700;
+}

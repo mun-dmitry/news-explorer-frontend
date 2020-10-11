@@ -1,0 +1,17 @@
+@import url('./_add/news__button_add.css');
+@import url('./_delete/news__button_delete.css');
+@import url('./_bookmark/news__button_bookmark.css');
+
+.news__button {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 0;
+  background-color: #FFFFFF;
+  background-repeat: no-repeat;
+  background-position: center;
+}

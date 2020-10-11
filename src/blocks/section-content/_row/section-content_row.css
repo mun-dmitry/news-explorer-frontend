@@ -1,0 +1,9 @@
+.section-content.section-content_row {
+  flex-direction: row;
+}
+
+@media screen and ( max-width: 320px ) {
+  .section-content.section-content.section-content_row{
+    flex-direction: column;
+  }
+}

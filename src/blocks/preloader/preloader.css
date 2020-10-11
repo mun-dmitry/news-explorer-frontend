@@ -1,0 +1,9 @@
+@import url('./__circle/preloader__circle.css');
+@import url('./__paragraph/preloader__paragraph.css');
+@import url('./_visible/preloader_visible.css');
+
+.preloader {
+  flex-direction: column;
+  align-items: center;
+  display: none;
+}

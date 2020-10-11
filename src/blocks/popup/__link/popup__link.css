@@ -1,0 +1,7 @@
+@import url('./_success/popup__link_success.css');
+
+.popup__link {
+  color: #2F71E5;
+  border: 0;
+  background: transparent;
+}

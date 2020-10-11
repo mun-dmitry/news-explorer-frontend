@@ -1,0 +1,8 @@
+.footer__link-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.footer__link-icon:last-of-type {
+  margin-left: 28px;
+}

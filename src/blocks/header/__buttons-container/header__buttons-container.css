@@ -1,0 +1,15 @@
+@import url('./_mobile/header__buttons-container_mobile.css');
+
+.header__buttons-container {
+  display: flex;
+  width: fit-content;
+  height: 100%;
+  color: inherit;
+  align-items: baseline;
+}
+
+@media screen and ( max-width: 320px ) {
+  .header__buttons-container {
+    display: none;
+  }
+}

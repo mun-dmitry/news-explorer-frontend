@@ -1,0 +1,12 @@
+.search__input-container{
+  width: 100%;
+  position: relative;
+  border-radius: 100px;
+  background-color: white;
+}
+
+@media screen and ( max-width: 320px ) {
+  .search__input-container {
+    background-color: transparent;
+  }
+}

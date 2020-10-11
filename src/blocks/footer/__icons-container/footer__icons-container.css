@@ -1,0 +1,12 @@
+.footer__icons-container {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and ( max-width: 320px ) {
+  .footer__icons-container {
+    position: relative;
+    top: -83px;
+    left: 230px;
+  }
+}
