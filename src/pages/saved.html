@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css %>">
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css[1] %>">
   <title>NewsExplorer</title>
 </head>
 <body class="page">
+  <script type="module" src="<%= htmlWebpackPlugin.files.js[1] %>"></script>
   <header class="header header_theme_light">
     <div class="header__content">
       <p class="header__title">NewsExplorer</p>

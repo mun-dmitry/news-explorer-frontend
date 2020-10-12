@@ -6,7 +6,10 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const cssnano = require('cssnano');
 
 module.exports = {
-  entry: { main: './src/scripts/index.js' },
+  entry: {
+    index: './src/scripts/index.js',
+    saved: './src/scripts/saved.js',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[chunkhash].js',
@@ -56,15 +59,17 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css',
+      filename: path.normalize('./styles/[name].[contenthash].css'),
     }),
     new HtmlWebpackPlugin({
       inject: false,
+      hash: true,
       template: './src/pages/index.html',
       filename: 'index.html',
     }),
     new HtmlWebpackPlugin({
       inject: false,
+      hash: true,
       template: './src/pages/saved.html',
       filename: 'saved.html',
     }),

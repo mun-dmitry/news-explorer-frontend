@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css%>">
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css[0] %>">
   <link rel="shortcut icon" href="<%=require('../images/favicon.png')%>">
   <title>NewsExplorer</title>
 </head>
 <body class="page">
-  <script type="module" src="<%= htmlWebpackPlugin.files.js %>"></script>
+  <script type="module" src="<%= htmlWebpackPlugin.files.js[0] %>"></script>
   <header class="header header_theme_dark">
     <div class="header__content">
       <p class="header__title">NewsExplorer</p>
