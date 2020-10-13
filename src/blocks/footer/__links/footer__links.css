@@ -5,9 +5,10 @@
   margin: auto 7% auto 0;
 }
 
-@media screen and ( max-width: 320px ) {
+@media screen and ( max-width: 540px ) {
   .footer__links{
     flex-direction: column;
     padding: 0;
+    position: relative;
   }
 }

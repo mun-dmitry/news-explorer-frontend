@@ -3,7 +3,7 @@
   flex-direction: row;
   width: fit-content;
   margin: 16px auto 0;
-  font-family: Inter;
+  font-family: Inter, Arial, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 17px;
   align-items: baseline;

@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css[0] %>">
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css[0]%>">
   <link rel="shortcut icon" href="<%=require('../images/favicon.png')%>">
   <title>NewsExplorer</title>
 </head>
 <body class="page">
-  <script type="module" src="<%= htmlWebpackPlugin.files.js[0] %>"></script>
+  <script type="module" src="<%= htmlWebpackPlugin.files.js[0]%>"></script>
   <header class="header header_theme_dark">
     <div class="header__content">
       <p class="header__title">NewsExplorer</p>
-      <button class="header__menu-button"><img src="<%=require('../images/menu-icon.svg')%>"></button>
+      <button class="header__menu-button"><img src="<%=require('../images/menu-icon.svg')%>" alt="иконка вызова меню"></button>
       <nav class="header__buttons-container">
         <a class="button header__button header__button_active" href="#">Главная</a>
         <a class="button header__button" href="saved.html">Сохранённые статьи</a>
@@ -41,7 +41,7 @@
           <p class="search__subtitle">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
           <form class="search__form">
             <div class="search__input-container">
-              <input class="search__input" type="text" placeholder="Введите тему новости">
+              <input class="search__input" type="text" placeholder="Введите тему новости" required>
               <button class="button search__button">Искать</button>
             </div>
           </form>
@@ -57,7 +57,7 @@
         </div>
 
         <div class="no-results no-results_visible">
-          <img class="no-results__image" src="<%=require('../images/not-found.svg')%>">
+          <img class="no-results__image" src="<%=require('../images/not-found.svg')%>" alt="Ничего не найдено">
           <h2 class="no-results__title">Ничего не найдено</h2>
           <p class="no-results__subtitle">К сожалению по вашему запросу ничего не найдено.</p>
         </div>
@@ -65,7 +65,7 @@
         <h2 class="section-title">Результаты поиска</h2>
         <div class="news-list">
           <article class="news">
-            <img class="news__image" src="<%=require('../images/image_08.png')%>">
+            <img class="news__image" src="<%=require('../images/image_08.png')%>" alt="Обложка новости">
             <div class="news__text-content">
               <p class="news__date">2 августа, 2019</p>
               <h3 class="news__title">Национальное достояние – парки</h3>
@@ -77,7 +77,7 @@
           </article>
 
           <article class="news">
-            <img class="news__image" src="<%=require('../images/image_08.png')%>">
+            <img class="news__image" src="<%=require('../images/image_08.png')%>" alt="Обложка новости">
             <div class="news__text-content">
               <p class="news__date">2 августа, 2019</p>
               <h3 class="news__title">Национальное достояние – парки</h3>
@@ -89,7 +89,7 @@
           </article>
 
           <article class="news">
-            <img class="news__image" src="<%=require('../images/image_08.png')%>">
+            <img class="news__image" src="<%=require('../images/image_08.png')%>" alt="Обложка новости">
             <div class="news__text-content">
               <p class="news__date">2 августа, 2019</p>
               <h3 class="news__title">Национальное достояние – парки</h3>
@@ -107,11 +107,11 @@
 
     <section class="about-author">
       <div class="section-content section-content_row">
-        <img class="about-author__image" src="<%=require('../images/ebites.jpg')%>">
+        <img class="about-author__image" src="<%=require('../images/auth-foto.jpg')%>" alt="Фото автора сайта">
         <div class="about-author__text-container">
           <h2 class="section-title">Об авторе</h2>
-          <p class="about-author__text">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.
-            Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем можете помочь потенциальным заказчикам.</p>
+          <p class="about-author__text">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.</p>
+          <p class="about-author__text">Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем можете помочь потенциальным заказчикам.</p>
         </div>
       </div>
     </section>
@@ -119,18 +119,20 @@
     <!-- <template id="login-template" class="popup__template"> -->
       <div class="popup">
         <div class="popup__content">
-          <img src="<%=require('../images/close.svg')%>" alt="" class="popup__close">
+          <img src="<%=require('../images/close.svg')%>" alt="Иконка закрытия попапа" class="popup__close">
           <h3 class="popup__title">Вход</h3>
           <form class="popup__form" id="loginForm" novalidate>
               <div class="popup__input-container">
-                <label class="popup__label" for="email">Email</label>
-                <input type="email" name="email" class="popup__input" placeholder="Введите почту" required>
+                <label class="popup__label">
+                  Email <input type="email" name="email" class="popup__input" placeholder="Введите почту" required>
+                </label>
                 <span class="error">Неправильный формат email</span>
               </div>
 
               <div class="popup__input-container">
-                <label class="popup__label" for="password">Пароль</label>
-                <input type="password" name="password" class="popup__input" placeholder="Введите пароль" minlength="6" maxlength="30" required>
+                <label class="popup__label">
+                  Пароль <input type="password" name="password" class="popup__input" placeholder="Введите пароль" minlength="6" maxlength="30" required>
+                </label>
               </div>
 
               <button type="submit" class="button popup__button">Войти</button>
@@ -148,23 +150,26 @@
     <!-- <template id="registration-template" class="popup__template"> -->
       <div class="popup">
         <div class="popup__content">
-          <img src="<%=require('../images/close.svg')%>" alt="" class="popup__close">
+          <img src="<%=require('../images/close.svg')%>" alt="Иконка закрытия попапа" class="popup__close">
           <h3 class="popup__title">Регистрация</h3>
           <form class="popup__form" id="registrationForm" novalidate>
               <div class="popup__input-container">
-                <label class="popup__label" for="email">Email</label>
-                <input type="email" name="email" class="popup__input" placeholder="Введите почту" required>
+                <label class="popup__label">
+                  Email <input type="email" name="email" class="popup__input" placeholder="Введите почту" required>
+                </label>
                 <span class="error">Неправильный формат email</span>
               </div>
 
               <div class="popup__input-container">
-                <label class="popup__label" for="password">Пароль</label>
-                <input type="password" name="password" class="popup__input" placeholder="Введите пароль" minlength="6" maxlength="30" required>
+                <label class="popup__label">
+                  Пароль <input type="password" name="password" class="popup__input" placeholder="Введите пароль" minlength="6" maxlength="30" required>
+                </label>
               </div>
 
               <div class="popup__input-container">
-                <label class="popup__label" for="name">Имя</label>
-                <input type="text" name="name" class="popup__input" placeholder="Введите своё имя" minlength="2" maxlength="30" required>
+                <label class="popup__label">
+                  Имя <input type="text" name="name" class="popup__input" placeholder="Введите своё имя" minlength="2" maxlength="30" required>
+                </label>
               </div>
 
               <span class="error error_conflict error_visible">Такой пользователь уже есть</span>
@@ -183,7 +188,7 @@
     <!-- <template id="success-template" class="popup__template"> -->
       <div class="popup">
         <div class="popup__content">
-          <img src="<%=require('../images/close.svg')%>" alt="" class="popup__close">
+          <img src="<%=require('../images/close.svg')%>" alt="Иконка закрытия попапа" class="popup__close">
           <h3 class="popup__title">Пользователь успешно зарегистрирован!</h3>
           <button class="popup__link popup__link_success">Войти</button>
         </div>
@@ -197,10 +202,8 @@
     <ul class="footer__links">
       <li class="footer__link"><a href="index.html">Главная</a></li>
       <li class="footer__link"><a href="https://praktikum.yandex.ru/" target="new">Яндекс.Практикум</a></li>
-      <div class="footer__icons-container">
-        <li class="footer__link-icon"><a href="https://github.com/" target="new"><img src="<%=require('../images/github-icon.svg')%>"></a></li>
-        <li class="footer__link-icon"><a href="https://www.facebook.com/" target="new"><img src="<%=require('../images/facebook-icon.svg')%>"></a></li>
-      </div>
+      <li class="footer__link-icon"><a href="https://github.com/" target="new"><img src="<%=require('../images/github-icon.svg')%>" alt="иконка сайта Github"></a></li>
+      <li class="footer__link-icon"><a href="https://www.facebook.com/" target="new"><img src="<%=require('../images/facebook-icon.svg')%>" alt="иконка сайта Facebook"></a></li>
     </ul>
   </footer>
 

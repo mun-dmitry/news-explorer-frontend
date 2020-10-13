@@ -17,10 +17,19 @@
   text-decoration: none;
 }
 
-@media screen and ( max-width: 320px ) {
+@media screen and ( max-width: 768px ) {
+  .footer__link {
+    width: fit-content;
+  }
+  .footer__link:nth-of-type(2) {
+    margin: 0 16px 0 16px;
+    width: fit-content;
+  }
+}
+
+@media screen and ( max-width: 540px ) {
   .footer__link {
     line-height: 48px;
-    width: fit-content;
     margin-left: 16px;
   }
 

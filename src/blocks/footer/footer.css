@@ -2,7 +2,6 @@
 @import url('./__link/footer__link.css');
 @import url('./__link-icon/footer__link-icon.css');
 @import url('./__links/footer__links.css');
-@import url('./__icons-container/footer__icons-container.css');
 
 .footer {
   display: flex;
@@ -12,7 +11,7 @@
   width: 100%;
 }
 
-@media screen and ( max-width: 320px ) {
+@media screen and ( max-width: 540px ) {
   .footer {
     flex-direction: column-reverse;
     height: fit-content;

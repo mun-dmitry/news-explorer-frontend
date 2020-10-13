@@ -14,10 +14,6 @@
   color: #B6BCBF;
 }
 
-.search__input:focus {
-  outline: none;
-}
-
 @media screen and ( max-width: 320px ) {
   .search__input {
     height: 56px;

@@ -3,8 +3,6 @@
 @import url('./__text-content/news__text-content.css');
 @import url('./__image/news__image.css');
 @import url('./__link/news__link.css');
-@import url('./__paragraph/news__paragraph.css');
-@import url('./__title/news__title.css');
 @import url('./__tooltip/news__tooltip.css');
 @import url('./__keywords/news__keywords.css');
 
@@ -36,7 +34,17 @@
   }
 }
 
-@media screen and ( max-width: 320px ) {
+@media screen and ( max-width: 750px ) {
+  .news {
+    width: calc((100% - 8px) / 2);
+  }
+
+  .news:nth-of-type(2n) {
+    margin-right: 0;
+  }
+}
+
+@media screen and ( max-width: 450px ) {
   .news {
     width: 100%;
   }

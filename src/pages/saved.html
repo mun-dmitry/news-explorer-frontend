@@ -3,21 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css[1] %>">
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css[1]%>">
   <title>NewsExplorer</title>
 </head>
 <body class="page">
-  <script type="module" src="<%= htmlWebpackPlugin.files.js[1] %>"></script>
+  <script type="module" src="<%= htmlWebpackPlugin.files.js[1]%>"></script>
   <header class="header header_theme_light">
     <div class="header__content">
       <p class="header__title">NewsExplorer</p>
+      <button class="header__menu-button"><img src="<%=require('../images/menu-icon_dark.svg')%>" alt="иконка вызова меню"></button>
       <nav class="header__buttons-container">
         <a class="button header__button header__button_theme_light" href="index.html">Главная</a>
         <a class="button header__button header__button_active header__button_theme_light" href="saved.html">Сохранённые статьи</a>
         <button class="button header__bordered-button">
-          Грета<img src="<%=require('../images/logout-icon.svg')%>">
+          Грета<img src="<%=require('../images/logout-icon.svg')%>" alt="иконка деавторизации">
         </button>
       </nav>
+
+    <!-- <template id="menuPopup"> -->
+      <div class="popup">
+        <nav class="header__buttons-container header__buttons-container_mobile">
+          <a class="button header__button" href="#">Главная</a>
+          <a class="button header__button" href="saved.html">Сохранённые статьи</a>
+          <button class="button header__bordered-button">Авторизоваться</button>
+        </nav>
+      </div>
+
+    <!-- </template> -->
     </div>
   </header>
 
@@ -25,7 +37,7 @@
     <section class="info">
       <div class="section-content">
         <div class="info__content">
-          <h1 class="info__title">Сохранённые статьи</p>
+          <h1 class="info__title">Сохранённые статьи</h1>
           <h2 class="section-title info__subtitle">Грета, у вас 5 сохранённых статей</h2>
           <p class="info__keywords">По ключевым словам: <span>Природа, Тайга</span> и <span>2-м другим</span></p>
         </div>
@@ -36,7 +48,7 @@
       <div class="section-content">
         <div class="news-list">
           <article class="news">
-            <img class="news__image" src="<%=require('../images/image_08.png')%>">
+            <img class="news__image" src="<%=require('../images/image_08.png')%>" alt="Обложка новости">
             <div class="news__text-content">
               <p class="news__date">2 августа, 2019</p>
               <h3 class="news__title">Национальное достояние – парки</h3>
@@ -49,7 +61,7 @@
           </article>
 
           <article class="news">
-            <img class="news__image" src="<%=require('../images/image_08.png')%>">
+            <img class="news__image" src="<%=require('../images/image_08.png')%>" alt="Обложка новости">
             <div class="news__text-content">
               <p class="news__date">2 августа, 2019</p>
               <h3 class="news__title">Национальное достояние – парки</h3>
@@ -62,7 +74,7 @@
           </article>
 
           <article class="news">
-            <img class="news__image" src="<%=require('../images/image_08.png')%>">
+            <img class="news__image" src="<%=require('../images/image_08.png')%>" alt="Обложка новости">
             <div class="news__text-content">
               <p class="news__date">2 августа, 2019</p>
               <h3 class="news__title">Национальное достояние – парки</h3>
@@ -75,7 +87,7 @@
           </article>
 
           <article class="news">
-            <img class="news__image" src="<%=require('../images/image_08.png')%>">
+            <img class="news__image" src="<%=require('../images/image_08.png')%>" alt="Обложка новости">
             <div class="news__text-content">
               <p class="news__date">2 августа, 2019</p>
               <h3 class="news__title">Национальное достояние – парки</h3>
@@ -88,7 +100,7 @@
           </article>
 
           <article class="news">
-            <img class="news__image" src="<%=require('../images/image_08.png')%>">
+            <img class="news__image" src="<%=require('../images/image_08.png')%>" alt="Обложка новости">
             <div class="news__text-content">
               <p class="news__date">2 августа, 2019</p>
               <h3 class="news__title">Национальное достояние – парки</h3>
@@ -107,12 +119,10 @@
   <footer class="footer">
     <p class="footer__copyright">© 2020 Supersite, Powered by News API</p>
     <ul class="footer__links">
-      <li class="footer__link"><a href="https://yapr-news-explorer.tk/">Главная</a></li>
+      <li class="footer__link"><a href="index.html">Главная</a></li>
       <li class="footer__link"><a href="https://praktikum.yandex.ru/" target="new">Яндекс.Практикум</a></li>
-      <div class="footer__icons-container">
-        <li class="footer__link-icon"><a href="https://github.com/" target="new"><img src="<%=require('../images/github-icon.svg')%>"></a></li>
-        <li class="footer__link-icon"><a href="https://www.facebook.com/" target="new"><img src="<%=require('../images/facebook-icon.svg')%>"></a></li>
-      </div>
+      <li class="footer__link-icon"><a href="https://github.com/" target="new"><img src="<%=require('../images/github-icon.svg')%>" alt="иконка сайта Github"></a></li>
+      <li class="footer__link-icon"><a href="https://www.facebook.com/" target="new"><img src="<%=require('../images/facebook-icon.svg')%>" alt="иконка сайта Facebook"></a></li>
     </ul>
   </footer>
 </body>

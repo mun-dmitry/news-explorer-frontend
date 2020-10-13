@@ -23,14 +23,16 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-            },
+        use: [{
+          loader: MiniCssExtractPlugin.loader,
+        },
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 2,
           },
-          'postcss-loader',
+        },
+        'postcss-loader',
         ],
       },
       {
@@ -59,7 +61,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: path.normalize('./styles/[name].[contenthash].css'),
+      filename: '[name].[contenthash].css',
     }),
     new HtmlWebpackPlugin({
       inject: false,
