@@ -12,23 +12,22 @@
   <header class="header header_theme_dark">
     <div class="header__content">
       <p class="header__title">NewsExplorer</p>
-      <button class="header__menu-button"><img src="<%=require('../images/menu-icon.svg')%>" alt="иконка вызова меню"></button>
-      <nav class="header__buttons-container">
+      <button class="header__menu-button"><img class="header__menu-button" src="<%=require('../images/menu-icon.svg')%>" alt="иконка вызова меню"></button>
+      <!-- <nav class="header__buttons-container">
         <a class="button header__button header__button_active" href="#">Главная</a>
         <a class="button header__button" href="saved.html">Сохранённые статьи</a>
         <button class="button header__bordered-button">Авторизоваться</button>
-      </nav>
+      </nav> -->
 
-      <!-- <template id="menuPopup"> -->
-        <div class="popup">
-          <nav class="header__buttons-container header__buttons-container_mobile">
+      <template id="navigation-template">
+        <!-- <div class="popup"> -->
+          <nav class="header__buttons-container">
             <a class="button header__button" href="#">Главная</a>
             <a class="button header__button" href="saved.html">Сохранённые статьи</a>
             <button class="button header__bordered-button">Авторизоваться</button>
           </nav>
-        </div>
-
-      <!-- </template> -->
+        <!-- </div> -->
+      </template>
     </div>
 
   </header>
@@ -116,8 +115,12 @@
       </div>
     </section>
 
-    <!-- <template id="login-template" class="popup__template"> -->
-      <div class="popup">
+    <template id="popup">
+      <div class="popup"></div>
+    </template>
+
+    <template id="login-template" class="popup__template">
+      <!-- <div class="popup"> -->
         <div class="popup__content">
           <img src="<%=require('../images/close.svg')%>" alt="Иконка закрытия попапа" class="popup__close">
           <h3 class="popup__title">Вход</h3>
@@ -125,13 +128,14 @@
               <div class="popup__input-container">
                 <label class="popup__label">
                   Email <input type="email" name="email" class="popup__input" placeholder="Введите почту" required>
+                  <span class="error"></span>
                 </label>
-                <span class="error">Неправильный формат email</span>
               </div>
 
               <div class="popup__input-container">
                 <label class="popup__label">
                   Пароль <input type="password" name="password" class="popup__input" placeholder="Введите пароль" minlength="6" maxlength="30" required>
+                  <span class="error"></span>
                 </label>
               </div>
 
@@ -139,16 +143,16 @@
 
               <div class="popup__alt-action">
                 <p class="popup__alt-text">или</p>
-                <button class="popup__link">Зарегистрироваться</button>
+                <button type="button" class="popup__link">Зарегистрироваться</button>
               </div>
           </form>
 
         </div>
-      </div>
-    <!-- </template> -->
+      <!-- </div> -->
+    </template>
 
-    <!-- <template id="registration-template" class="popup__template"> -->
-      <div class="popup">
+    <template id="registration-template" class="popup__template">
+      <!-- <div class="popup"> -->
         <div class="popup__content">
           <img src="<%=require('../images/close.svg')%>" alt="Иконка закрытия попапа" class="popup__close">
           <h3 class="popup__title">Регистрация</h3>
@@ -156,44 +160,46 @@
               <div class="popup__input-container">
                 <label class="popup__label">
                   Email <input type="email" name="email" class="popup__input" placeholder="Введите почту" required>
+                  <span class="error"></span>
                 </label>
-                <span class="error">Неправильный формат email</span>
               </div>
 
               <div class="popup__input-container">
                 <label class="popup__label">
                   Пароль <input type="password" name="password" class="popup__input" placeholder="Введите пароль" minlength="6" maxlength="30" required>
+                  <span class="error"></span>
                 </label>
               </div>
 
               <div class="popup__input-container">
                 <label class="popup__label">
                   Имя <input type="text" name="name" class="popup__input" placeholder="Введите своё имя" minlength="2" maxlength="30" required>
+                  <span class="error"></span>
                 </label>
               </div>
 
-              <span class="error error_conflict error_visible">Такой пользователь уже есть</span>
+              <span class="error error_conflict">Такой пользователь уже есть</span>
               <button type="submit" class="button popup__button">Зарегистрироваться</button>
 
               <div class="popup__alt-action">
                 <p class="popup__alt-text">или</p>
-                <button class="popup__link">Войти</button>
+                <button type="button" class="popup__link">Войти</button>
               </div>
           </form>
 
         </div>
-      </div>
-    <!-- </template> -->
+      <!-- </div> -->
+    </template>
 
-    <!-- <template id="success-template" class="popup__template"> -->
-      <div class="popup">
+    <template id="success-template" class="popup__template">
+      <!-- <div class="popup"> -->
         <div class="popup__content">
           <img src="<%=require('../images/close.svg')%>" alt="Иконка закрытия попапа" class="popup__close">
           <h3 class="popup__title">Пользователь успешно зарегистрирован!</h3>
           <button class="popup__link popup__link_success">Войти</button>
         </div>
-      </div>
-    <!-- </template> -->
+      <!-- </div> -->
+    </template>
 
   </main>
 
