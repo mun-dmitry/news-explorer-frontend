@@ -8,20 +8,19 @@
   <title>NewsExplorer</title>
 </head>
 <body class="page">
-  <script type="module" src="<%= htmlWebpackPlugin.files.js[0]%>"></script>
   <header class="header header_theme_dark">
     <div class="header__content">
       <p class="header__title">NewsExplorer</p>
       <button class="header__menu-button"><img class="header__menu-button" src="<%=require('../images/menu-icon.svg')%>" alt="иконка вызова меню"></button>
-      <!-- <nav class="header__buttons-container">
+      <nav class="header__buttons-container">
         <a class="button header__button header__button_active" href="#">Главная</a>
         <a class="button header__button" href="saved.html">Сохранённые статьи</a>
         <button class="button header__bordered-button">Авторизоваться</button>
-      </nav> -->
+      </nav>
 
       <template id="navigation-template">
         <!-- <div class="popup"> -->
-          <nav class="header__buttons-container">
+          <nav class="header__buttons-container header__buttons-container_mobile">
             <a class="button header__button" href="#">Главная</a>
             <a class="button header__button" href="saved.html">Сохранённые статьи</a>
             <button class="button header__bordered-button">Авторизоваться</button>
@@ -115,7 +114,7 @@
       </div>
     </section>
 
-    <template id="popup">
+    <template id="popup-template">
       <div class="popup"></div>
     </template>
 
@@ -212,6 +211,6 @@
       <li class="footer__link-icon"><a href="https://www.facebook.com/" target="new"><img src="<%=require('../images/facebook-icon.svg')%>" alt="иконка сайта Facebook"></a></li>
     </ul>
   </footer>
-
+  <script type="module" src="<%= htmlWebpackPlugin.files.js[0]%>"></script>
 </body>
 </html>

@@ -24,6 +24,4 @@ const plugins = [
   ],
 ];
 
-const sourceType = 'unambiguous';
-
-module.exports = { presets, plugins, sourceType };
+module.exports = { presets, plugins };
