@@ -1,4 +1,4 @@
-export default class FormValidator {
+module.exports =  class FormValidator {
     constructor (formElement, validationErrorMessages, regexps) {
         this._formElement = formElement;
         this._errorMessages = validationErrorMessages;

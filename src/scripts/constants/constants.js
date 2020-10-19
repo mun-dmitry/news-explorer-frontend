@@ -22,6 +22,9 @@ const PAGE_ELEMENTS = {
   page: document.querySelector('.page'),
   authorizeButton: document.querySelector('.header__bordered-button'),
   navigationButton: document.querySelector('.header__menu-button'),
+  header: document.querySelector('.header'),
+  articlesLink: document.querySelector('.articles-link'),
+  logoutButton: document.querySelector('.logout'),
 };
 
 module.exports = {

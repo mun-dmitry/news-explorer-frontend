@@ -14,8 +14,11 @@
       <button class="header__menu-button"><img class="header__menu-button" src="<%=require('../images/menu-icon.svg')%>" alt="иконка вызова меню"></button>
       <nav class="header__buttons-container">
         <a class="button header__button header__button_active" href="#">Главная</a>
-        <a class="button header__button" href="saved.html">Сохранённые статьи</a>
+        <a class="button header__button articles-link" href="saved.html">Сохранённые статьи</a>
         <button class="button header__bordered-button">Авторизоваться</button>
+        <button class="button header__bordered-button header__button_invisible logout">
+          Грета<img src="<%=require('../images/logout-icon.svg')%>" alt="иконка деавторизации">
+        </button>
       </nav>
 
       <template id="navigation-template">
@@ -24,6 +27,9 @@
             <a class="button header__button" href="#">Главная</a>
             <a class="button header__button" href="saved.html">Сохранённые статьи</a>
             <button class="button header__bordered-button">Авторизоваться</button>
+            <button class="button header__bordered-button header__button_invisible logout">
+              Грета<img src="<%=require('../images/logout-icon.svg')%>" alt="иконка деавторизации">
+            </button>
           </nav>
         <!-- </div> -->
       </template>
@@ -138,6 +144,7 @@
                 </label>
               </div>
 
+              <span class="error error_conflict"></span>
               <button type="submit" class="button popup__button">Войти</button>
 
               <div class="popup__alt-action">
@@ -177,7 +184,7 @@
                 </label>
               </div>
 
-              <span class="error error_conflict">Такой пользователь уже есть</span>
+              <span class="error error_conflict"></span>
               <button type="submit" class="button popup__button">Зарегистрироваться</button>
 
               <div class="popup__alt-action">

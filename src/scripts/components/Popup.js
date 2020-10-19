@@ -1,9 +1,10 @@
 module.exports = class Popup {
-  constructor (templates, parentObject, creators) {
+  constructor (templates, parentObject, creators, api) {
     this._templates = templates;
     this._parentObject = parentObject;
     this._createForm = creators.form();
     this._createNavigation = creators.navigation();
+    this._api = api;
   }
 
   _setContent = (target) => {
@@ -12,7 +13,8 @@ module.exports = class Popup {
     if (target.classList.contains('header__bordered-button')) {
       if (target.innerText === 'Авторизоваться') {
         contentType = 'login';
-        content = this._createForm.create(contentType);
+        this._form = this._createForm;
+        content = this._form.create(contentType);
       } else {
         console.log('Деавторизация');
       }
@@ -20,11 +22,13 @@ module.exports = class Popup {
     if (target.classList.contains('popup__link')) {
       if (target.innerText === 'Зарегистрироваться') {
         contentType = 'registration';
-        content = this._createForm.create(contentType);
+        this._form = this._createForm;
+        content = this._form.create(contentType);
       }
       if (target.innerText === 'Войти') {
         contentType = 'login';
-        content = this._createForm.create(contentType);
+        this._form = this._createForm;
+        content = this._form.create(contentType);
       }
     }
     if (target.classList.contains('header__menu-button')) {
@@ -39,6 +43,13 @@ module.exports = class Popup {
   _switchContent = (event) => {
     this._clearContent();
     this._setContent(event.target);
+    this._setHandlers(this._contentType);
+  }
+
+  _showSuccess = () => {
+    this._contentType = 'success';
+    this._clearContent();
+    this._view.append(this._templates.success.content.cloneNode(true).children[0]);
     this._setHandlers(this._contentType);
   }
 
@@ -71,11 +82,37 @@ module.exports = class Popup {
     }
   }
 
+  _sendData = () => {
+    const data = this._form.getInfo();
+    if (this._contentType === 'login') {
+      this._api.signin(data)
+      .then((data) => {
+        if (data.authorized) {
+          this._form.clear();
+          this._close();
+        } else {
+          this._form.setServerError(data);
+        }
+      })
+    }
+    if (this._contentType === 'registration') {
+      this._api.signup(data)
+      .then((data) => {
+        if (data.data) {
+          this._showSuccess();
+        } else {
+          this._form.setServerError(data);
+        }
+      })
+    }
+  }
+
   _setHandlers = (contentType) => {
     if (contentType !== 'navigation') {
       if (contentType === 'login' || contentType === 'registration') {
-        this._view.querySelector('.popup__link').addEventListener('click', this._switchContent);
+        this._view.querySelector('.popup__button').addEventListener('click', this._sendData);
       }
+      this._view.querySelector('.popup__link').addEventListener('click', this._switchContent);
       this._view.querySelector('.popup__close').addEventListener('click', this._close);
     } else {
       this._view.querySelector('.header__bordered-button').addEventListener('click', this._switchContent);

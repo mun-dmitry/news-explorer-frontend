@@ -17,3 +17,8 @@
   background: #2F71E5;
   color: #ffffff;
 }
+
+[id="registrationForm"]:valid .popup__button {
+  background: #2F71E5;
+  color: #ffffff;
+}
