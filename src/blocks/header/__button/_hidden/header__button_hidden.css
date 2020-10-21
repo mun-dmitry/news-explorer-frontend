@@ -1,3 +1,7 @@
 .header__button.header__button_hidden {
   display: none;
 }
+
+.header__bordered-button.header__button_hidden{
+  display: none;
+}

@@ -7,6 +7,9 @@ module.exports =  class FormValidator {
 
     _checkInputValidity = (input) => {
         let isInputValid = true;
+        if (input.name === 'search') {
+
+        }
         if (input.name === 'email') {
           if (!this._regexps.email.test(input.value)) {
             isInputValid = false;
@@ -63,7 +66,7 @@ module.exports =  class FormValidator {
 
     setSubmitButtonState = (event) => {
         if (event) {event.preventDefault()};
-        const submitButton = this._formElement.querySelector('.popup__button');
+        const submitButton = this._formElement.querySelector('.button');
 
         if (!this._checkFormValidity()) {
             submitButton.setAttribute('disabled', true);
@@ -73,8 +76,8 @@ module.exports =  class FormValidator {
     }
 
     setEventListeners = () => {
-        this._formElement.querySelectorAll('.popup__input').forEach(input => input.addEventListener('input', this._onlineValidationMessage));
-        this._formElement.querySelectorAll('.popup__input').forEach(input => input.addEventListener('input', this.setSubmitButtonState));
-        this._formElement.querySelector('button').addEventListener('click', this.setSubmitButtonState);
+        this._formElement.querySelectorAll('input').forEach(input => input.addEventListener('input', this._onlineValidationMessage));
+        this._formElement.querySelectorAll('input').forEach(input => input.addEventListener('input', this.setSubmitButtonState));
+        this._formElement.querySelector('.button').addEventListener('click', this.setSubmitButtonState);
     }
 }

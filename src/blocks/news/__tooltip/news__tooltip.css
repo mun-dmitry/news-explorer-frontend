@@ -1,9 +1,12 @@
+@import url('./_disabled/news__tooltip_disabled.css');
+
 .news__tooltip {
   position: absolute;
   top: 24px;
   right: 69px;
   border-radius: 10px;
   max-width: 182px;
+  width: fit-content;
   height: 40px;
   background-color: #FFFFFF;
   margin: 0;

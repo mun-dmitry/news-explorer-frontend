@@ -3,28 +3,61 @@ import '../styles/index.css';
 const Popup = require('./components/Popup');
 const Form = require('./components/Form');
 const FormValidator = require('./utils/FormValidator');
-const Navigation = require('./components/Navigation');
 const MainApi = require('./api/MainApi');
+const NewsApi = require('./api/NewsApi');
+const Header = require('./components/Header');
+const SearchForm = require('./components/SearchForm');
+const NewsCardList = require('./components/NewsCardList');
+const NewsCard = require('./components/NewsCard');
 const {
-  TEMPLATES, REGEXPS, ERROR_MESSAGES, PAGE_ELEMENTS,
+  TEMPLATES,
+  REGEXPS,
+  ERROR_MESSAGES,
+  PAGE_ELEMENTS,
+  HEADER_PROPS,
+  SEARCH_FORM_PROPS,
+  CARDLIST_PROPS,
 } = require('./constants/constants');
+const { NEWS_API_CONFIG, MAIN_API_CONFIG } = require('./constants/config');
 
-const apiProps = {
-  baseUrl: 'https://api.yapr-news-explorer.tk/',
-};
-const mainApi = new MainApi(apiProps);
+const mainApi = new MainApi(MAIN_API_CONFIG);
+const newsApi = new NewsApi(NEWS_API_CONFIG);
+const header = new Header(HEADER_PROPS);
 
+header.render(localStorage);
 const createFormValidator = (arg) => new FormValidator(arg, ERROR_MESSAGES, REGEXPS);
 function createForm() {
   return new Form(TEMPLATES.login, TEMPLATES.registration, createFormValidator);
 }
-const createNavigation = () => new Navigation(TEMPLATES.navigation);
+const createNewsCard = () => new NewsCard(TEMPLATES.card);
 const creators = {
   form: createForm,
-  navigation: createNavigation,
+  newsCard: createNewsCard,
   validator: createFormValidator,
 };
 
-const popup = new Popup(TEMPLATES, PAGE_ELEMENTS.page, creators, mainApi);
+const cardList = new NewsCardList(CARDLIST_PROPS, creators.newsCard);
+
+function sendRequest(keywords) {
+  if (cardList.view) {
+    cardList.remove();
+  }
+  cardList.create();
+  const getResponseData = newsApi.getNews(keywords);
+  getResponseData.then((data) => cardList.renderResults(data));
+}
+
+function logOut() {
+  localStorage.setItem('isLoggedIn', 'false');
+  localStorage.removeItem('userName');
+  localStorage.removeItem('token');
+  header.render(localStorage);
+}
+
+const popup = new Popup(TEMPLATES, PAGE_ELEMENTS.page, creators, mainApi, header);
+const searchForm = new SearchForm(SEARCH_FORM_PROPS, sendRequest);
+
 PAGE_ELEMENTS.authorizeButton.addEventListener('click', popup.open);
-PAGE_ELEMENTS.navigationButton.addEventListener('click', popup.open);
+PAGE_ELEMENTS.navigationButton.addEventListener('click', header.showMobileView);
+PAGE_ELEMENTS.searchButton.addEventListener('click', searchForm.getNews);
+PAGE_ELEMENTS.logoutButton.addEventListener('click', logOut);

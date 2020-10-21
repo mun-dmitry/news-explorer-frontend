@@ -44,9 +44,8 @@ module.exports = class MainApi {
   getUserData() {
     return fetch(`${this._baseURL}users/me`, {
       method: 'GET',
-      credentials: 'include',
       headers: {
-        // authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
     })
@@ -58,9 +57,8 @@ module.exports = class MainApi {
   getArticles() {
     return fetch(`${this._baseURL}articles`, {
       method: 'GET',
-      credentials: 'include',
       headers: {
-        // authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
     })
@@ -72,9 +70,8 @@ module.exports = class MainApi {
   createArticle(article) {
     return fetch(`${this._baseURL}articles`, {
       method: 'POST',
-      credentials: 'include',
       headers: {
-        // authorization: `Bearer ${localStorage.getItem('token')}`,
+        authorization: `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({

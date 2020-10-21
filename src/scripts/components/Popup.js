@@ -1,10 +1,10 @@
 module.exports = class Popup {
-  constructor (templates, parentObject, creators, api) {
+  constructor (templates, parentObject, creators, api, header) {
     this._templates = templates;
     this._parentObject = parentObject;
     this._createForm = creators.form();
-    this._createNavigation = creators.navigation();
     this._api = api;
+    this._header = header;
   }
 
   _setContent = (target) => {
@@ -31,10 +31,6 @@ module.exports = class Popup {
         content = this._form.create(contentType);
       }
     }
-    if (target.classList.contains('header__menu-button')) {
-      contentType = 'navigation';
-      content = this._createNavigation.create();
-    }
 
     this._contentType = contentType;
     this._view.append(content);
@@ -58,6 +54,9 @@ module.exports = class Popup {
   }
 
   open = (event) => {
+    if (event.target.parentNode.classList.contains('header__buttons-container_mobile')) {
+      this._header.hideView();
+    }
     this._view = this._templates.popup.content.cloneNode(true).children[0];
     this._view.classList.add('popup_is-opened');
     this._parentObject.append(this._view);
@@ -82,13 +81,24 @@ module.exports = class Popup {
     }
   }
 
+  _renderHeader = () => {
+    this._api.getUserData()
+      .then((data) => {
+        localStorage.setItem('userName', data.data.name);
+        this._header.render(localStorage);
+      })
+  }
+
   _sendData = () => {
     const data = this._form.getInfo();
     if (this._contentType === 'login') {
       this._api.signin(data)
       .then((data) => {
-        if (data.authorized) {
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('isLoggedIn', 'true');
           this._form.clear();
+          this._renderHeader();
           this._close();
         } else {
           this._form.setServerError(data);
@@ -108,15 +118,11 @@ module.exports = class Popup {
   }
 
   _setHandlers = (contentType) => {
-    if (contentType !== 'navigation') {
       if (contentType === 'login' || contentType === 'registration') {
         this._view.querySelector('.popup__button').addEventListener('click', this._sendData);
       }
       this._view.querySelector('.popup__link').addEventListener('click', this._switchContent);
       this._view.querySelector('.popup__close').addEventListener('click', this._close);
-    } else {
-      this._view.querySelector('.header__bordered-button').addEventListener('click', this._switchContent);
-    }
 
     this._view.addEventListener('click', this._onOutsideClickCloser);
     this._parentObject.addEventListener('keydown', this._onEscCloser);
