@@ -1,4 +1,4 @@
-module.exports = function dateConverter(date) {
+export function dateConverter(date) {
   const yy = date.slice(0, 4);
   const mm = date.slice(5, 7);
   const dd = date.slice(8, 10);

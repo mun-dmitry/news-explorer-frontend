@@ -1,21 +1,19 @@
 import '../styles/saved.css';
-
-const Header = require('./components/Header');
-const MainApi = require('./api/MainApi');
-const InfoSection = require('./components/InfoSection');
-const NewsCardList = require('./components/NewsCardList');
-const NewsCard = require('./components/NewsCard');
-const dateConverter = require('./utils/dateConverter');
-const logOut = require('./utils/logOutFunction');
-
-const {
+import { Header } from './components/Header';
+import { MainApi } from './api/MainApi';
+import { InfoSection } from './components/InfoSection';
+import { NewsCardList } from './components/NewsCardList';
+import { NewsCard } from './components/NewsCard';
+import { dateConverter } from './utils/dateConverter';
+import { logOut } from './utils/logOutFunction';
+import { MAIN_API_CONFIG } from './constants/config';
+import {
   TEMPLATES,
   PAGE_ELEMENTS,
   HEADER_PROPS,
   INFO_SECTION_PROPS,
   CARDLIST_PROPS,
-} = require('./constants/constants');
-const { MAIN_API_CONFIG } = require('./constants/config');
+} from './constants/constants';
 
 if (localStorage.isLoggedIn === 'false') {
   location.href = 'index.html';
@@ -42,7 +40,8 @@ mainApi.getArticles()
     infoSection.render(data.length, keyWords);
     cardList.create();
     cardList.renderResults(data);
-  });
+  })
+  .catch((error) => error.json());
 
 PAGE_ELEMENTS.navigationButton.addEventListener('click', header.showMobileView);
 PAGE_ELEMENTS.logoutButton.onclick = logOut;

@@ -1,21 +1,19 @@
-module.exports = class SearchForm {
+export class SearchForm {
   constructor(searchFormProps, sendRequest) {
     this._view = searchFormProps.form;
     this._input = searchFormProps.input;
     this._errorMessage = searchFormProps.errorMessage;
+    this._placeholderMessage = searchFormProps.placeholderMessage;
     this._button = searchFormProps.button;
     this._sendRequest = sendRequest;
   }
 
   _checkValidity = () => {
-    const error = this._view.querySelector('.error');
     if (!this._input.checkValidity()) {
-      error.classList.add('error_visible');
-      error.textContent = this._errorMessage;
+      this._input.placeholder = this._errorMessage;
       return false;
     } else {
-      error.textContent = '';
-      error.classList.remove('error_visible');
+      this._input.placeholder = this._placeholderMessage;
       return true;
     }
   }

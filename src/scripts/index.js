@@ -1,17 +1,17 @@
 import '../styles/index.css';
-
-const Popup = require('./components/Popup');
-const Form = require('./components/Form');
-const FormValidator = require('./utils/FormValidator');
-const MainApi = require('./api/MainApi');
-const NewsApi = require('./api/NewsApi');
-const Header = require('./components/Header');
-const SearchForm = require('./components/SearchForm');
-const NewsCardList = require('./components/NewsCardList');
-const NewsCard = require('./components/NewsCard');
-const dateConverter = require('./utils/dateConverter');
-const logOut = require('./utils/logOutFunction');
-const {
+import { NewsCardList } from './components/NewsCardList';
+import { Popup } from './components/Popup';
+import { Form } from './components/Form';
+import { FormValidator } from './utils/FormValidator';
+import { MainApi } from './api/MainApi';
+import { NewsApi } from './api/NewsApi';
+import { Header } from './components/Header';
+import { SearchForm } from './components/SearchForm';
+import { NewsCard } from './components/NewsCard';
+import { dateConverter } from './utils/dateConverter';
+import { logOut } from './utils/logOutFunction';
+import { NEWS_API_CONFIG, MAIN_API_CONFIG } from './constants/config';
+import {
   TEMPLATES,
   REGEXPS,
   ERROR_MESSAGES,
@@ -19,8 +19,7 @@ const {
   HEADER_PROPS,
   SEARCH_FORM_PROPS,
   CARDLIST_PROPS,
-} = require('./constants/constants');
-const { NEWS_API_CONFIG, MAIN_API_CONFIG } = require('./constants/config');
+} from './constants/constants';
 
 const mainApi = new MainApi(MAIN_API_CONFIG);
 const newsApi = new NewsApi(NEWS_API_CONFIG);
@@ -40,8 +39,13 @@ function sendRequest(keywords) {
     cardList.remove();
   }
   cardList.create();
-  const getResponseData = newsApi.getNews(keywords);
-  getResponseData.then((data) => cardList.renderResults(data));
+  PAGE_ELEMENTS.searchButton.setAttribute('disabled', true);
+  newsApi.getNews(keywords)
+    .then((data) => {
+      cardList.renderResults(data);
+      PAGE_ELEMENTS.searchButton.removeAttribute('disabled');
+    })
+    .catch((err) => cardList.renderResults(err));
 }
 
 const popup = new Popup(TEMPLATES, PAGE_ELEMENTS.page, createForm, mainApi, header);

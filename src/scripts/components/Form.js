@@ -1,4 +1,4 @@
-module.exports = class Form {
+export class Form {
   constructor (loginTemplate, registrationTemplate, formValidatorCreator) {
     this._loginTemplate = loginTemplate;
     this._registrationTemplate = registrationTemplate;

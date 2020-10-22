@@ -1,4 +1,4 @@
-module.exports = class NewsCard {
+export class NewsCard {
   constructor (cardData, template, dateConverter, api) {
     this._template = template;
     this._dateConverter = dateConverter;
@@ -23,11 +23,12 @@ module.exports = class NewsCard {
       this._image.setAttribute('src', this._cardData.urlToImage);
       this._date.textContent = this._dateConverter(this._cardData.publishedAt);
       this._title.textContent = this._cardData.title;
-      this._text.textContent = this._cardData.content;
+      this._text.textContent = this._cardData.description;
       this._link.textContent = this._cardData.source.name;
       this._link.setAttribute('href', this._cardData.url);
       this.renderIcon('index');
     } else {
+      this._serverId = this._cardData._id;
       this._keywords.textContent = this._cardData.keyword;
       this._image.setAttribute('src', this._cardData.image);
       this._date.textContent = this._dateConverter(this._cardData.date);
@@ -66,12 +67,12 @@ module.exports = class NewsCard {
       image: this._cardData.urlToImage,
     }).then((data) => {
       this._serverId = data.data._id;
-    })
+    }).catch((error) => error.json())
   }
 
   _deleteCard = () => {
     this._isSaved = false;
-    return this._api.deleteArticle(this._serverId);
+    return this._api.deleteArticle(this._serverId).catch((error) => error.json())
   }
 
   _iconClickHandler = (event) => {
@@ -91,7 +92,8 @@ module.exports = class NewsCard {
           })
       }
       if (event.target.classList.contains('news__button_delete')) {
-        this._deleteCard();
+        this._deleteCard()
+          .then(() => { this._view.remove() });
       }
     };
   }

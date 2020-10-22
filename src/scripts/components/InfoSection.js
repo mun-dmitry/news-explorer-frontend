@@ -1,4 +1,4 @@
-module.exports = class InfoSection {
+export class InfoSection {
   constructor (infoSectionProps) {
     this._userNameField = infoSectionProps.userName;
     this._articlesAmountField = infoSectionProps.articlesAmount;

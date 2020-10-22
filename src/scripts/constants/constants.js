@@ -17,7 +17,7 @@ const ERROR_MESSAGES = {
   emptyInput: 'Это обязательное поле',
   wrongLength: 'Должно быть от 6 до 30 символов',
   emailTypeMismatch: 'Неверный формат email',
-  passwordMismatch: 'Пароль должен содержать не менее 8 символов, из которых не менее 1 цифры, не менее 1 строчной и 1 заглавной буквы. Пароль может содержать только буквы латинского алфавита и цифры',
+  passwordMismatch: `Неверный формат пароля. Образец формата: '..s.7..A'`,
 };
 
 const PAGE_ELEMENTS = {
@@ -45,6 +45,7 @@ const SEARCH_FORM_PROPS = {
   input: PAGE_ELEMENTS.searchInput,
   button: PAGE_ELEMENTS.searchButton,
   errorMessage: 'Нужно ввести ключевое слово',
+  placeholderMessage: 'Введите тему новости',
 };
 
 const CARDLIST_PROPS = {
@@ -67,7 +68,7 @@ const INFO_SECTION_PROPS = {
   },
 };
 
-module.exports = {
+export {
   TEMPLATES,
   REGEXPS,
   ERROR_MESSAGES,

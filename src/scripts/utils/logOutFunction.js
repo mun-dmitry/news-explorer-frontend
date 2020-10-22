@@ -1,4 +1,4 @@
-module.exports = function logOut() {
+export function logOut() {
   localStorage.setItem('isLoggedIn', 'false');
   localStorage.removeItem('userName');
   localStorage.removeItem('token');

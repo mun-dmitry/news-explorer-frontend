@@ -1,4 +1,4 @@
-module.exports = class MainApi {
+export class MainApi {
   constructor(apiProps) {
     this._baseURL = apiProps.baseUrl;
   }
@@ -22,7 +22,6 @@ module.exports = class MainApi {
         return Promise.reject(res);
       })
       .then((data) => data)
-      .catch((error) => error.json());
   }
 
   signin(userData) {
@@ -38,7 +37,6 @@ module.exports = class MainApi {
     })
       .then((res) => (res.ok ? res.json() : Promise.reject(res)))
       .then((data) => data)
-      .catch((error) => error.json());
   }
 
   getUserData() {
@@ -51,7 +49,6 @@ module.exports = class MainApi {
     })
       .then((res) => (res.ok ? res.json() : Promise.reject(res)))
       .then((data) => data)
-      .catch((error) => error.json());
   }
 
   getArticles() {
@@ -64,7 +61,6 @@ module.exports = class MainApi {
     })
       .then((res) => (res.ok ? res.json() : Promise.reject(res)))
       .then((data) => data)
-      .catch((error) => error.json());
   }
 
   createArticle(article) {
@@ -84,9 +80,8 @@ module.exports = class MainApi {
         image: article.image,
       }),
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res)))
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.message)))
       .then((data) => data)
-      .catch((error) => error.json());
   }
 
   deleteArticle(articleId) {
@@ -99,6 +94,5 @@ module.exports = class MainApi {
     })
       .then((res) => (res.ok ? res.json() : Promise.reject(res)))
       .then((data) => data)
-      .catch((error) => error.json());
   }
 };

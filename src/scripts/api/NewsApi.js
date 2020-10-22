@@ -1,4 +1,4 @@
-module.exports = class NewsApi {
+export class NewsApi {
   constructor (newsApiProps) {
     this._url = newsApiProps.url;
     this._apiKey = newsApiProps.apiKey;
@@ -32,6 +32,5 @@ module.exports = class NewsApi {
         articles.keyword = keyword;
         return articles;
       })
-      .catch((error) => error.json());
   }
 }

@@ -1,4 +1,4 @@
-module.exports = class Header {
+export class Header {
   constructor (headerProps) {
     this._articlesButton = headerProps.articlesButton;
     this._logoutButton = headerProps.logoutButton;

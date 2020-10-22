@@ -1,4 +1,4 @@
-module.exports = class NewsCardlist {
+export class NewsCardList {
   constructor (cardListProps, createCard) {
     this._template = cardListProps.template;
     this._parentObject = cardListProps.parentObject;
@@ -20,12 +20,19 @@ module.exports = class NewsCardlist {
   }
 
   remove = () => {
+    this._articles = undefined;
+    this._articleIndex = undefined;
     this.view.remove();
   }
 
   renderResults = (data) => {
+    this._articlesRendered = this._articlesShown;
     if (data.status === 'error') {
       this._error.textContent = `Ошибка сервера: ${data.message}`;
+      this._toggleLoader();
+    }
+    if (data.ok === false) {
+      this._error.textContent = `Ошибка запроса: ${data.statusText}`;
       this._toggleLoader();
     } else {
       if (data.length === 0) {
@@ -55,7 +62,7 @@ module.exports = class NewsCardlist {
 
   renderCards = () => {
     while (
-      this._articleIndex < this._articles.length && this._articleIndex < this._articlesShown
+      this._articleIndex < this._articles.length && this._articleIndex < this._articlesRendered
       ) {
       this._article = this._articles[this._articleIndex];
       if (!this._article.keywords) {this._article.keywords = this._keywords}
@@ -88,14 +95,8 @@ module.exports = class NewsCardlist {
     this._error.textContent = this._errorMessage;
   }
 
-  clearList = () => {
-    while (this._cardList.firstChild) {
-      this._cardList.removeChild(this._cardList.firstChild);
-    }
-  }
-
   _showMore = () => {
-    this._articlesShown += this._articlesShown;
+    this._articlesRendered = this._articlesRendered + 3;
     this.renderCards();
   }
 

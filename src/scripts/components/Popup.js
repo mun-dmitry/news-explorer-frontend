@@ -1,4 +1,4 @@
-module.exports = class Popup {
+export class Popup {
   constructor (templates, parentObject, createForm, api, header) {
     this._templates = templates;
     this._parentObject = parentObject;
@@ -87,33 +87,33 @@ module.exports = class Popup {
         localStorage.setItem('userName', data.data.name);
         this._header.render(localStorage);
       })
+      .catch((error) => error.json());
   }
 
   _sendData = () => {
+    this._view.querySelector('.popup__button').setAttribute('disabled', true);
     const data = this._form.getInfo();
     if (this._contentType === 'login') {
       this._api.signin(data)
       .then((data) => {
-        if (data.token) {
-          localStorage.setItem('token', data.token);
-          localStorage.setItem('isLoggedIn', 'true');
-          this._form.clear();
-          this._renderHeader();
-          this._close();
-        } else {
-          this._form.setServerError(data);
-        }
+        this._view.querySelector('.popup__button').removeAttribute('disabled');
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('isLoggedIn', 'true');
+        this._form.clear();
+        this._renderHeader();
+        this._close();
       })
+      .catch((error) => error.json())
+      .then((errRes) => this._form.setServerError(errRes));
     }
     if (this._contentType === 'registration') {
       this._api.signup(data)
       .then((data) => {
-        if (data.data) {
-          this._showSuccess();
-        } else {
-          this._form.setServerError(data);
-        }
+        this._view.querySelector('.popup__button').removeAttribute('disabled');
+        this._showSuccess();
       })
+      .catch((error) => error.json())
+      .then((errRes) => this._form.setServerError(errRes));
     }
   }
 
@@ -127,5 +127,4 @@ module.exports = class Popup {
     this._view.addEventListener('click', this._onOutsideClickCloser);
     this._parentObject.addEventListener('keydown', this._onEscCloser);
   }
-
 }
