@@ -88,4 +88,17 @@ module.exports = class MainApi {
       .then((data) => data)
       .catch((error) => error.json());
   }
+
+  deleteArticle(articleId) {
+    return fetch(`${this._baseURL}articles/${articleId}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res)))
+      .then((data) => data)
+      .catch((error) => error.json());
+  }
 };

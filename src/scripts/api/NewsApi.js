@@ -27,11 +27,11 @@ module.exports = class NewsApi {
   getNews = (keyword) => {
     this._setDates();
     return fetch(`${this._url}q=${keyword}&from=${this._from}&to=${this._to}&sortBy=popularity&apiKey=${this._apiKey}&pageSize=${this._pageSize}`)
-      .then((data) => (data ? data.json() : Promise.reject(res)))
+      .then((res) => (res.ok ? res.json() : Promise.reject(res)))
       .then((articles) => {
         articles.keyword = keyword;
         return articles;
       })
-      .catch(() => false);
+      .catch((error) => error.json());
   }
 }

@@ -9,7 +9,7 @@ const TEMPLATES = {
 };
 
 const REGEXPS = {
-  email: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.([a-zA-Z0-9-]+)+$/,
+  email: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.([a-zA-Z0-9-]{2,5})+$/,
   password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/,
 };
 
@@ -22,10 +22,10 @@ const ERROR_MESSAGES = {
 
 const PAGE_ELEMENTS = {
   page: document.querySelector('.page'),
-  authorizeButton: document.querySelector('.header__bordered-button'),
+  authorizeButton: document.querySelector('#authorize'),
   navigationButton: document.querySelector('.header__menu-button'),
-  articlesButton: document.querySelector('.articles-link'),
-  logoutButton: document.querySelector('.logout'),
+  articlesButton: document.querySelector('#articles-link'),
+  logoutButton: document.querySelector('#logout'),
   overlay: document.querySelector('.overlay'),
   searchButton: document.querySelector('.search__button'),
   searchForm: document.querySelector('.search__form'),
@@ -56,6 +56,18 @@ const CARDLIST_PROPS = {
   articlesShown: 3,
 };
 
+const INFO_SECTION_PROPS = {
+  userName: document.querySelector('#saved-articles-username'),
+  articlesAmount: document.querySelector('#saved-articles-amount'),
+  keywords: document.querySelector('.info__subtitle'),
+  strings: {
+    zero: ' сохранённых статей',
+    one: ' сохранённая статья',
+    two: ' сохранённые статьи',
+    youGot: ', у вас ',
+  },
+};
+
 module.exports = {
   TEMPLATES,
   REGEXPS,
@@ -64,4 +76,5 @@ module.exports = {
   HEADER_PROPS,
   SEARCH_FORM_PROPS,
   CARDLIST_PROPS,
+  INFO_SECTION_PROPS,
 };

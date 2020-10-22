@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="<%=require('../images/favicon.png')%>">
   <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css[1]%>">
   <title>NewsExplorer</title>
 </head>
@@ -15,21 +16,11 @@
       <nav class="header__buttons-container">
         <a class="button header__button header__button_theme_light" href="index.html">Главная</a>
         <a class="button header__button header__button_active header__button_theme_light" href="saved.html">Сохранённые статьи</a>
-        <button class="button header__bordered-button">
-          Грета<img src="<%=require('../images/logout-icon.svg')%>" alt="иконка деавторизации">
+        <button class="button header__bordered-button" id="logout">
+          <span></span>
+          <img src="<%=require('../images/logout-icon.svg')%>" alt="иконка деавторизации">
         </button>
       </nav>
-
-    <!-- <template id="menuPopup"> -->
-      <div class="popup">
-        <nav class="header__buttons-container header__buttons-container_mobile">
-          <a class="button header__button" href="#">Главная</a>
-          <a class="button header__button" href="saved.html">Сохранённые статьи</a>
-          <button class="button header__bordered-button">Авторизоваться</button>
-        </nav>
-      </div>
-
-    <!-- </template> -->
     </div>
   </header>
 
@@ -38,81 +29,44 @@
       <div class="section-content">
         <div class="info__content">
           <h1 class="info__title">Сохранённые статьи</h1>
-          <h2 class="section-title info__subtitle">Грета, у вас 5 сохранённых статей</h2>
-          <p class="info__keywords">По ключевым словам: <span>Природа, Тайга</span> и <span>2-м другим</span></p>
+          <h2 class="section-title info__subtitle"><span id="saved-articles-username"></span><span id="saved-articles-amount"></span></h2>
         </div>
       </div>
     </section>
 
     <section class="results">
-      <div class="section-content">
-        <div class="news-list">
-          <article class="news">
-            <img class="news__image" src="<%=require('../images/image_08.png')%>" alt="Обложка новости">
-            <div class="news__text-content">
-              <p class="news__date">2 августа, 2019</p>
-              <h3 class="news__title">Национальное достояние – парки</h3>
-              <p class="news__paragraph">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-              <a class="news__link" href="https://lenta.ru" target="new">ЛЕНТА.РУ</a>
-            </div>
-            <button class="news__button news__button_delete"></button>
-            <p class="news__keywords">Природа</p>
-            <p class="news__tooltip">Убрать из сохранённых</p>
-          </article>
-
-          <article class="news">
-            <img class="news__image" src="<%=require('../images/image_08.png')%>" alt="Обложка новости">
-            <div class="news__text-content">
-              <p class="news__date">2 августа, 2019</p>
-              <h3 class="news__title">Национальное достояние – парки</h3>
-              <p class="news__paragraph">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-              <a class="news__link" href="https://lenta.ru" target="new">ЛЕНТА.РУ</a>
-            </div>
-            <button class="news__button news__button_delete"></button>
-            <p class="news__keywords">Природа</p>
-            <p class="news__tooltip">Убрать из сохранённых</p>
-          </article>
-
-          <article class="news">
-            <img class="news__image" src="<%=require('../images/image_08.png')%>" alt="Обложка новости">
-            <div class="news__text-content">
-              <p class="news__date">2 августа, 2019</p>
-              <h3 class="news__title">Национальное достояние – парки</h3>
-              <p class="news__paragraph">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-              <a class="news__link" href="https://lenta.ru" target="new">ЛЕНТА.РУ</a>
-            </div>
-            <button class="news__button news__button_delete"></button>
-            <p class="news__keywords">Природа</p>
-            <p class="news__tooltip">Убрать из сохранённых</p>
-          </article>
-
-          <article class="news">
-            <img class="news__image" src="<%=require('../images/image_08.png')%>" alt="Обложка новости">
-            <div class="news__text-content">
-              <p class="news__date">2 августа, 2019</p>
-              <h3 class="news__title">Национальное достояние – парки</h3>
-              <p class="news__paragraph">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-              <a class="news__link" href="https://lenta.ru" target="new">ЛЕНТА.РУ</a>
-            </div>
-            <button class="news__button news__button_delete"></button>
-            <p class="news__keywords">Природа</p>
-            <p class="news__tooltip">Убрать из сохранённых</p>
-          </article>
-
-          <article class="news">
-            <img class="news__image" src="<%=require('../images/image_08.png')%>" alt="Обложка новости">
-            <div class="news__text-content">
-              <p class="news__date">2 августа, 2019</p>
-              <h3 class="news__title">Национальное достояние – парки</h3>
-              <p class="news__paragraph">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-              <a class="news__link" href="https://lenta.ru" target="new">ЛЕНТА.РУ</a>
-            </div>
-            <button class="news__button news__button_delete"></button>
-            <p class="news__keywords">Природа</p>
-            <p class="news__tooltip">Убрать из сохранённых</p>
-          </article>
+      <template id="cardlist-template">
+        <div class="section-content">
+          <div class="preloader preloader_visible">
+            <i class="preloader__circle"></i>
+            <p class="preloader__paragraph">Идет поиск новостей...</p>
+          </div>
+          <h2 class="section-title"></h2>
+          <span class="no-results__error"></span>
+          <div class="no-results">
+            <img class="no-results__image" src="<%=require('../images/not-found.svg')%>" alt="Ничего не найдено">
+            <h2 class="no-results__title">Ничего не найдено</h2>
+            <p class="no-results__subtitle">К сожалению по вашему запросу ничего не найдено.</p>
+          </div>
+          <div class="news-list"></div>
+          <button class="button results__button results__button_hidden">Показать ещё</button>
         </div>
-      </div>
+      </template>
+
+      <template id="card-template">
+        <article class="news">
+          <img class="news__image" src="" alt="Обложка новости">
+          <div class="news__text-content">
+            <p class="news__date"></p>
+            <h3 class="news__title"></h3>
+            <p class="news__paragraph"></p>
+            <a class="news__link" href="" target="new"></a>
+          </div>
+          <button class="news__button news__button_delete"></button>
+          <p class="news__tooltip"></p>
+          <p class="news__keywords"></p>
+        </article>
+      </template>
     </section>
   </main>
 
@@ -125,6 +79,7 @@
       <li class="footer__link-icon"><a href="https://www.facebook.com/" target="new"><img src="<%=require('../images/facebook-icon.svg')%>" alt="иконка сайта Facebook"></a></li>
     </ul>
   </footer>
+  <div class="overlay"></div>
 </body>
 
 </html>

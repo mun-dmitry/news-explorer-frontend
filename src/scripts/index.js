@@ -9,6 +9,9 @@ const Header = require('./components/Header');
 const SearchForm = require('./components/SearchForm');
 const NewsCardList = require('./components/NewsCardList');
 const NewsCard = require('./components/NewsCard');
+const dateConverter = require('./utils/dateConverter');
+const logOut = require('./utils/logOutFunction');
+
 const {
   TEMPLATES,
   REGEXPS,
@@ -29,7 +32,7 @@ const createFormValidator = (arg) => new FormValidator(arg, ERROR_MESSAGES, REGE
 function createForm() {
   return new Form(TEMPLATES.login, TEMPLATES.registration, createFormValidator);
 }
-const createNewsCard = () => new NewsCard(TEMPLATES.card);
+const createNewsCard = (arg) => new NewsCard(arg, TEMPLATES.card, dateConverter, mainApi);
 const creators = {
   form: createForm,
   newsCard: createNewsCard,
@@ -47,17 +50,10 @@ function sendRequest(keywords) {
   getResponseData.then((data) => cardList.renderResults(data));
 }
 
-function logOut() {
-  localStorage.setItem('isLoggedIn', 'false');
-  localStorage.removeItem('userName');
-  localStorage.removeItem('token');
-  header.render(localStorage);
-}
-
 const popup = new Popup(TEMPLATES, PAGE_ELEMENTS.page, creators, mainApi, header);
 const searchForm = new SearchForm(SEARCH_FORM_PROPS, sendRequest);
 
 PAGE_ELEMENTS.authorizeButton.addEventListener('click', popup.open);
 PAGE_ELEMENTS.navigationButton.addEventListener('click', header.showMobileView);
 PAGE_ELEMENTS.searchButton.addEventListener('click', searchForm.getNews);
-PAGE_ELEMENTS.logoutButton.addEventListener('click', logOut);
+PAGE_ELEMENTS.logoutButton.onclick = logOut;

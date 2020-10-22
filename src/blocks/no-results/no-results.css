@@ -2,6 +2,7 @@
 @import url('./__subtitle/no-results__subtitle.css');
 @import url('./__title/no-results__title.css');
 @import url('./_visible/no-results_visible.css');
+@import url('./__error/no-results__error.css');
 
 .no-results {
   align-items: center;

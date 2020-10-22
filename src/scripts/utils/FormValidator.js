@@ -6,22 +6,27 @@ module.exports =  class FormValidator {
     }
 
     _checkInputValidity = (input) => {
-        let isInputValid = true;
-        if (input.name === 'search') {
-
-        }
-        if (input.name === 'email') {
-          if (!this._regexps.email.test(input.value)) {
-            isInputValid = false;
-            input.setCustomValidity('Invalid field');
-          } else {
-            input.setCustomValidity('');
-          }
-        } else if (!input.checkValidity()) {
+      let isInputValid = true;
+      if (input.name === 'password') {
+        if (!this._regexps.password.test(input.value)) {
           isInputValid = false;
+          input.setCustomValidity('Invalid field');
+        } else {
+          input.setCustomValidity('');
         }
+      }
+      if (input.name === 'email') {
+        if (!this._regexps.email.test(input.value)) {
+          isInputValid = false;
+          input.setCustomValidity('Invalid field');
+        } else {
+          input.setCustomValidity('');
+        }
+      } else if (!input.checkValidity()) {
+        isInputValid = false;
+      }
 
-        return isInputValid;
+      return isInputValid;
     }
 
     _onlineValidationMessage = (event) => {
@@ -47,37 +52,40 @@ module.exports =  class FormValidator {
     }
 
     _setValidationMessage (inputElement) {
-        const error = inputElement.parentNode.querySelector('.error');
-        if (inputElement.validity.valueMissing) {
-            error.textContent = this._errorMessages.emptyInput;
-        }
-        if (inputElement.validity.tooShort || inputElement.validity.tooLong) {
-            error.textContent = this._errorMessages.wrongLength;
-        }
-        if (inputElement.name === 'email') {
-            error.textContent = this._errorMessages.emailTypeMismatch;
-        }
+      const error = inputElement.parentNode.querySelector('.error');
+      if (inputElement.validity.valueMissing) {
+        error.textContent = this._errorMessages.emptyInput;
+      }
+      if (inputElement.validity.tooShort || inputElement.validity.tooLong) {
+        error.textContent = this._errorMessages.wrongLength;
+      }
+      if (inputElement.name === 'email') {
+        error.textContent = this._errorMessages.emailTypeMismatch;
+      }
+      if (inputElement.name === 'password') {
+        error.textContent = this._errorMessages.passwordMismatch;
+      }
     }
 
     _eraseValidationMessage (inputElement) {
-        const error = inputElement.parentNode.querySelector('.error');
-        error.textContent = '';
+      const error = inputElement.parentNode.querySelector('.error');
+      error.textContent = '';
     }
 
     setSubmitButtonState = (event) => {
-        if (event) {event.preventDefault()};
-        const submitButton = this._formElement.querySelector('.button');
+      if (event) {event.preventDefault()};
+      const submitButton = this._formElement.querySelector('.button');
 
-        if (!this._checkFormValidity()) {
-            submitButton.setAttribute('disabled', true);
-        } else {
-            submitButton.removeAttribute('disabled');
-        }
+      if (!this._checkFormValidity()) {
+          submitButton.setAttribute('disabled', true);
+      } else {
+          submitButton.removeAttribute('disabled');
+      }
     }
 
     setEventListeners = () => {
-        this._formElement.querySelectorAll('input').forEach(input => input.addEventListener('input', this._onlineValidationMessage));
-        this._formElement.querySelectorAll('input').forEach(input => input.addEventListener('input', this.setSubmitButtonState));
-        this._formElement.querySelector('.button').addEventListener('click', this.setSubmitButtonState);
+      this._formElement.querySelectorAll('input').forEach(input => input.addEventListener('input', this._onlineValidationMessage));
+      this._formElement.querySelectorAll('input').forEach(input => input.addEventListener('input', this.setSubmitButtonState));
+      this._formElement.querySelector('.button').addEventListener('click', this.setSubmitButtonState);
     }
 }

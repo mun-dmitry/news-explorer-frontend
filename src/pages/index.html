@@ -14,9 +14,9 @@
       <button class="header__menu-button"><img class="header__menu-button" src="<%=require('../images/menu-icon.svg')%>" alt="иконка вызова меню"></button>
       <nav class="header__buttons-container">
         <a class="button header__button header__button_active" href="index.html">Главная</a>
-        <a class="button header__button header__button_hidden articles-link" href="saved.html">Сохранённые статьи</a>
-        <button class="button header__bordered-button">Авторизоваться</button>
-        <button class="button header__bordered-button header__button_hidden logout">
+        <a class="button header__button header__button_hidden" id="articles-link" href="saved.html">Сохранённые статьи</a>
+        <button class="button header__bordered-button" id="authorize">Авторизоваться</button>
+        <button class="button header__bordered-button header__button_hidden" id="logout">
           <span>Грета</span><img src="<%=require('../images/logout-icon.svg')%>" alt="иконка деавторизации">
         </button>
       </nav>
@@ -69,7 +69,7 @@
             <a class="news__link" href="" target="new"></a>
           </div>
           <button class="news__button news__button_add"></button>
-          <p class="news__tooltip">Войдите, чтобы сохранять статьи</p>
+          <p class="news__tooltip"></p>
         </article>
       </template>
     </section>
