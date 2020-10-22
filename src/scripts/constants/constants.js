@@ -10,21 +10,20 @@ const TEMPLATES = {
 
 const REGEXPS = {
   email: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.([a-zA-Z0-9-]{2,5})+$/,
-  password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/,
+  password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/,
 };
 
 const ERROR_MESSAGES = {
   emptyInput: 'Это обязательное поле',
   wrongLength: 'Должно быть от 6 до 30 символов',
   emailTypeMismatch: 'Неверный формат email',
-  passwordMismatch: 'Пароль должен содержать не менее 6 символов, из которых не менее 1 цифры, не менее 1 строчной и 1 заглавной буквы. Пароль может содержать только буквы латинского алфавита и цифры',
+  passwordMismatch: 'Пароль должен содержать не менее 8 символов, из которых не менее 1 цифры, не менее 1 строчной и 1 заглавной буквы. Пароль может содержать только буквы латинского алфавита и цифры',
 };
 
 const PAGE_ELEMENTS = {
   page: document.querySelector('.page'),
   authorizeButton: document.querySelector('#authorize'),
   navigationButton: document.querySelector('.header__menu-button'),
-  articlesButton: document.querySelector('#articles-link'),
   logoutButton: document.querySelector('#logout'),
   overlay: document.querySelector('.overlay'),
   searchButton: document.querySelector('.search__button'),
@@ -34,7 +33,7 @@ const PAGE_ELEMENTS = {
 };
 
 const HEADER_PROPS = {
-  articlesButton: PAGE_ELEMENTS.articlesButton,
+  articlesButton: document.querySelector('#articles-link'),
   logoutButton: PAGE_ELEMENTS.logoutButton,
   authorizeButton: PAGE_ELEMENTS.authorizeButton,
   buttonsContainer: PAGE_ELEMENTS.buttonsContainer,

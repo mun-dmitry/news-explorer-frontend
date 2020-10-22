@@ -1,3 +1,0 @@
-.news__button:hover ~ .news__tooltip.news__tooltip_disabled {
-  display: none;
-}

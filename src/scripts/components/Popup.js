@@ -1,8 +1,8 @@
 module.exports = class Popup {
-  constructor (templates, parentObject, creators, api, header) {
+  constructor (templates, parentObject, createForm, api, header) {
     this._templates = templates;
     this._parentObject = parentObject;
-    this._createForm = creators.form();
+    this._createForm = createForm();
     this._api = api;
     this._header = header;
   }

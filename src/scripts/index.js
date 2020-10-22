@@ -11,7 +11,6 @@ const NewsCardList = require('./components/NewsCardList');
 const NewsCard = require('./components/NewsCard');
 const dateConverter = require('./utils/dateConverter');
 const logOut = require('./utils/logOutFunction');
-
 const {
   TEMPLATES,
   REGEXPS,
@@ -27,19 +26,14 @@ const mainApi = new MainApi(MAIN_API_CONFIG);
 const newsApi = new NewsApi(NEWS_API_CONFIG);
 const header = new Header(HEADER_PROPS);
 
-header.render(localStorage);
 const createFormValidator = (arg) => new FormValidator(arg, ERROR_MESSAGES, REGEXPS);
 function createForm() {
   return new Form(TEMPLATES.login, TEMPLATES.registration, createFormValidator);
 }
 const createNewsCard = (arg) => new NewsCard(arg, TEMPLATES.card, dateConverter, mainApi);
-const creators = {
-  form: createForm,
-  newsCard: createNewsCard,
-  validator: createFormValidator,
-};
 
-const cardList = new NewsCardList(CARDLIST_PROPS, creators.newsCard);
+const cardList = new NewsCardList(CARDLIST_PROPS, createNewsCard);
+header.render(localStorage);
 
 function sendRequest(keywords) {
   if (cardList.view) {
@@ -50,7 +44,7 @@ function sendRequest(keywords) {
   getResponseData.then((data) => cardList.renderResults(data));
 }
 
-const popup = new Popup(TEMPLATES, PAGE_ELEMENTS.page, creators, mainApi, header);
+const popup = new Popup(TEMPLATES, PAGE_ELEMENTS.page, createForm, mainApi, header);
 const searchForm = new SearchForm(SEARCH_FORM_PROPS, sendRequest);
 
 PAGE_ELEMENTS.authorizeButton.addEventListener('click', popup.open);
