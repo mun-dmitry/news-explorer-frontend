@@ -66,34 +66,53 @@ export class NewsCard {
       link: this._cardData.url,
       image: this._cardData.urlToImage,
     }).then((data) => {
+      this._button.removeAttribute('disabled');
       this._serverId = data.data._id;
-    }).catch((error) => error.json())
+    });
   }
 
   _deleteCard = () => {
     this._isSaved = false;
-    return this._api.deleteArticle(this._serverId).catch((error) => error.json())
+    return this._api.deleteArticle(this._serverId);
   }
 
   _iconClickHandler = (event) => {
+    this._button.setAttribute('disabled', true)
     if (localStorage.isLoggedIn === 'true') {
       if (event.target.classList.contains('news__button_add')) {
         this._saveCard()
           .then(() => {
+            this._button.removeAttribute('disabled');
             this._button.classList.remove('news__button_add');
             this._button.classList.add('news__button_bookmark');
+          })
+          .catch((error) => {
+            error.json();
+            this._button.removeAttribute('disabled');
           })
       }
       if (event.target.classList.contains('news__button_bookmark')) {
         this._deleteCard()
           .then(() => {
+            this._button.removeAttribute('disabled');
             this._button.classList.remove('news__button_bookmark');
             this._button.classList.add('news__button_add');
+          })
+          .catch((error) => {
+            error.json();
+            this._button.removeAttribute('disabled');
           })
       }
       if (event.target.classList.contains('news__button_delete')) {
         this._deleteCard()
-          .then(() => { this._view.remove() });
+          .then(() => {
+            this._view.remove();
+            this._button.removeAttribute('disabled');
+          })
+          .catch((error) => {
+            error.json()
+            this._button.removeAttribute('disabled');
+          })
       }
     };
   }

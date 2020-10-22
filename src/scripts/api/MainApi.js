@@ -19,7 +19,7 @@ export class MainApi {
         if (res.ok) {
           return res.json();
         }
-        return Promise.reject(res);
+        return Promise.reject(res.message);
       })
       .then((data) => data)
   }
@@ -35,7 +35,7 @@ export class MainApi {
         password: userData.password,
       }),
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res)))
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.message)))
       .then((data) => data)
   }
 
@@ -47,7 +47,7 @@ export class MainApi {
         'Content-Type': 'application/json',
       },
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res)))
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.message)))
       .then((data) => data)
   }
 
@@ -59,7 +59,7 @@ export class MainApi {
         'Content-Type': 'application/json',
       },
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res)))
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.message)))
       .then((data) => data)
   }
 
@@ -92,7 +92,7 @@ export class MainApi {
         'Content-Type': 'application/json',
       },
     })
-      .then((res) => (res.ok ? res.json() : Promise.reject(res)))
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.message)))
       .then((data) => data)
   }
 };

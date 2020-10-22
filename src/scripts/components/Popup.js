@@ -97,23 +97,29 @@ export class Popup {
       this._api.signin(data)
       .then((data) => {
         this._view.querySelector('.popup__button').removeAttribute('disabled');
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('isLoggedIn', 'true');
-        this._form.clear();
-        this._renderHeader();
-        this._close();
+        if (data.token) {
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('isLoggedIn', 'true');
+          this._form.clear();
+          this._renderHeader();
+          this._close();
+        } else {
+          this._form.setServerError(data);
+        }
       })
-      .catch((error) => error.json())
-      .then((errRes) => this._form.setServerError(errRes));
+      .catch((error) => error.json());
     }
     if (this._contentType === 'registration') {
       this._api.signup(data)
       .then((data) => {
         this._view.querySelector('.popup__button').removeAttribute('disabled');
-        this._showSuccess();
+        if (data.data) {
+          this._showSuccess();
+        } else {
+          this._form.setServerError(data);
+        }
       })
-      .catch((error) => error.json())
-      .then((errRes) => this._form.setServerError(errRes));
+      .catch((error) => error.json());
     }
   }
 
