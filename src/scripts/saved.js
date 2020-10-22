@@ -17,6 +17,10 @@ const {
 } = require('./constants/constants');
 const { MAIN_API_CONFIG } = require('./constants/config');
 
+if (localStorage.isLoggedIn === 'false') {
+  location.href = 'index.html';
+}
+
 const header = new Header(HEADER_PROPS);
 const infoSection = new InfoSection(INFO_SECTION_PROPS);
 const mainApi = new MainApi(MAIN_API_CONFIG);
