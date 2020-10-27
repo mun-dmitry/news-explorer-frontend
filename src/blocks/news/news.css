@@ -1,0 +1,51 @@
+@import url('./__button/news__button.css');
+@import url('./__date/news__date.css');
+@import url('./__text-content/news__text-content.css');
+@import url('./__image/news__image.css');
+@import url('./__link/news__link.css');
+@import url('./__tooltip/news__tooltip.css');
+@import url('./__keywords/news__keywords.css');
+
+.news {
+  width: calc((100% - 2 * 16px) / 3);
+  position: relative;
+  background-color: #FFFFFF;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+
+.news:nth-of-type(3n) {
+  margin-right: 0;
+}
+
+.news:hover {
+  cursor: url('../../images/Pointer.png'), auto;
+}
+
+@media screen and (max-width: 768px) {
+  .news {
+    width: calc((100% - 2* 8px) / 3);
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+
+  .news:nth-of-type(3n) {
+    margin-right: 0;
+  }
+}
+
+@media screen and ( max-width: 750px ) {
+  .news {
+    width: calc((100% - 8px) / 2);
+  }
+
+  .news:nth-of-type(2n) {
+    margin-right: 0;
+  }
+}
+
+@media screen and ( max-width: 450px ) {
+  .news {
+    width: 100%;
+  }
+}

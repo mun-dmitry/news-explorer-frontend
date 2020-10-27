@@ -1,0 +1,19 @@
+.about-author__text-container {
+  margin-top: 131px;
+  max-width: 600px;
+  width: calc(100% - 30% - 56px);
+}
+
+@media screen and ( max-width: 768px ) {
+  .about-author__text-container {
+    margin-top: 40px;
+  }
+}
+
+@media screen and ( max-width: 540px ) {
+  .about-author__text-container{
+    width: 100%;
+    margin-top: 24px;
+    margin-bottom: 80px;
+  }
+}

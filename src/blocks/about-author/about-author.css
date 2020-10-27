@@ -1,0 +1,9 @@
+@import url('./__image/about-author__image.css');
+@import url('./__text-container/about-author__text-container.css');
+@import url('./__text/about-author__text.css');
+
+.about-author {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}

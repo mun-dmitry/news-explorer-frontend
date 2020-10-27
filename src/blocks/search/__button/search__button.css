@@ -1,0 +1,29 @@
+.search__button {
+  position: absolute;
+  min-width: 168px;
+  top: 0;
+  right: -0px;
+  height: 100%;
+  background-color: #2F71E5;
+  border-color:  transparent;
+  border-radius: 100px;
+  color: #ffffff;
+  outline: none;
+}
+
+.search__button:hover {
+  background-color: #347EFF;
+  cursor: url('../../../images/Pointer.png'), auto;
+}
+
+.search__button:active {
+  background-color: #2A65CC;
+}
+
+@media screen and ( max-width: 320px ) {
+  .search__button {
+    position: relative;
+    height: 56px;
+    width: 100%;
+  }
+}

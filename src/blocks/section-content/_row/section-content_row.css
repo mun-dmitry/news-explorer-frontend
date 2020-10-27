@@ -1,0 +1,10 @@
+.section-content.section-content_row {
+  flex-direction: row;
+}
+
+@media screen and ( max-width: 540px ) {
+  .section-content.section-content_row {
+    flex-direction: column;
+    align-items: center;
+  }
+}

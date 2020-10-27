@@ -1,0 +1,13 @@
+.section-title {
+  font-family: Roboto Slab, Arial, Helvetica, sans-serif;
+  font-size: 40px;
+  line-height: 46px;
+  margin: 0;
+}
+
+@media screen and ( max-width: 320px ) {
+  .section-title {
+    font-size: 30px;
+    line-height: 34px;
+  }
+}

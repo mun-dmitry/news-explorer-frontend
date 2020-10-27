@@ -1,0 +1,9 @@
+.error.error_conflict {
+  bottom: 125px;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  height: fit-content;
+}

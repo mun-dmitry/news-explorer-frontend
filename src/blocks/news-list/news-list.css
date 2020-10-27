@@ -1,0 +1,19 @@
+.news-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-top: 64px;
+  padding-bottom: 48px;
+}
+
+@media screen and ( max-width: 768px) {
+  .news-list {
+    padding-bottom: 24px;
+  }
+}
+
+@media screen and ( max-width: 320px ) {
+  .news-list {
+    padding-top: 24px;
+  }
+}

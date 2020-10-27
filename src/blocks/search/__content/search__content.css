@@ -1,0 +1,11 @@
+.search__content {
+  max-width: 608px;
+  width: 100%;
+  margin: 160px auto 0 auto;
+}
+
+@media screen and ( max-width: 320px ) {
+  .search__content {
+    margin-top: 86px;
+  }
+}

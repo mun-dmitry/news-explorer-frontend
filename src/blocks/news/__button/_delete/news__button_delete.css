@@ -1,0 +1,7 @@
+.news__button.news__button_delete {
+  background-image: url('../../../../images/delete-icon.svg');
+}
+
+.news__button.news__button_delete:hover {
+  background-image: url('../../../../images/delete-icon_hover.svg');
+}

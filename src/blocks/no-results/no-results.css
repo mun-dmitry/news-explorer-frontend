@@ -1,0 +1,12 @@
+@import url('./__image/no-results__image.css');
+@import url('./__subtitle/no-results__subtitle.css');
+@import url('./__title/no-results__title.css');
+@import url('./_visible/no-results_visible.css');
+@import url('./__error/no-results__error.css');
+
+.no-results {
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  display: none;
+}

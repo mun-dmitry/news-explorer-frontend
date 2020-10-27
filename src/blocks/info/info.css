@@ -1,0 +1,9 @@
+@import url('./__content/info__content.css');
+@import url('./__keywords/info__keywords.css');
+@import url('./__title/info__title.css');
+@import url('./__subtitle/info__subtitle.css');
+
+info {
+  font-size: 18px;
+  line-height: 24px;
+}

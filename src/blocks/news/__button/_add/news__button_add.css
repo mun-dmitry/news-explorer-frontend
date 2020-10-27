@@ -1,0 +1,7 @@
+.news__button.news__button_add {
+  background-image: url('../../../../images/save-icon.svg');
+}
+
+.news__button.news__button_add:hover {
+  background-image: url('../../../../images/save-icon_hover.svg');
+}

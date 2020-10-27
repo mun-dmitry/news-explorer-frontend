@@ -1,0 +1,25 @@
+@import url('./_hidden/results__button_hidden.css');
+
+.results__button {
+  margin: 0 auto 80px auto;
+  background-color: #FFFFFF;
+  border-radius: 80px;
+  border: 0;
+  color: #1A1B22;
+  width: 288px;
+  height: 64px;
+}
+
+.results__button:hover {
+  cursor: url('../../../images/Pointer.png'), auto;
+}
+
+.results__button:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+@media screen and ( max-width: 768px ) {
+  .results__button {
+    margin-bottom: 40px;
+  }
+}

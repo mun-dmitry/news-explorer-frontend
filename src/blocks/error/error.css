@@ -1,0 +1,20 @@
+@import url('./_conflict/error_conflict.css');
+@import url('./_visible/error_visible.css');
+
+.error {
+    position: absolute;
+    bottom: -17px;
+    left: 0;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF0000;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+.popup__input:invalid ~ .error{
+  display: block;
+}

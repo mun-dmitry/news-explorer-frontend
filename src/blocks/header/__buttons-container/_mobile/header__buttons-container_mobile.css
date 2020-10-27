@@ -1,0 +1,14 @@
+.header__buttons-container.header__buttons-container_mobile {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 56px;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  height: fit-content;
+  padding: 0 16px;
+  box-sizing: border-box;
+  color: #ffffff;
+  z-index: 1;
+}

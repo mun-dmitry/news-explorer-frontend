@@ -1,0 +1,21 @@
+.footer__link-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.footer__link-icon:last-of-type {
+  margin-left: 28px;
+}
+
+@media screen and ( max-width: 540px ) {
+  .footer__link-icon {
+    position: absolute;
+    top: 16px;
+    right: 45px;
+  }
+
+  .footer__link-icon:last-of-type {
+    top: 16px;
+    right: 0;
+  }
+}
